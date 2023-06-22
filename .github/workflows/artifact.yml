@@ -1,0 +1,19 @@
+name: Artifact
+on: push
+
+env:
+  ARTIFACT_NAME: test_artifact
+  
+jobs:
+  main: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out the code
+        uses: actions/checkout@v2
+      - name: list files
+        run : ls .
+      - name: upload artifact
+        uses: actions/upload-artifact@v2
+        with: 
+          name: ${{env.ARTIFACT_NAME}}
+          path: .
